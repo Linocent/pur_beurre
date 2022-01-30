@@ -1,0 +1,12 @@
+{% extends 'comparator/base.html' %}
+
+{% block content %}
+<header class="masthead">
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+  </form>
+</header>
+{% endblock %}

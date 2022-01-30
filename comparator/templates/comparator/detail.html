@@ -1,0 +1,48 @@
+{% extends 'comparator/base.html' %}
+{% block content %}
+
+<header class="masthead">
+    <div class="container">
+        <!-- <h1>Cartes</h1>
+        <h2>Card-group :</h2> -->
+        <div class="card-group mb-5">
+            <div class="card">
+                <!-- <div class="card-header">En-tête de la première carte</div> -->
+                <div class="card-body">
+                    <a href="{% url 'product_detail' product_id=product.product_id %}"><h3 class="card-title">{{product.name}}</h3></a>
+                    <img src={{product.image}}>
+                    <p class="card-text"><small class="text-muted"> Nutriscore: {{product.nutriscore}}</small></p>
+                </div>
+                <!-- <div class="card-footer">Pied de la première carte</div> -->
+            </div>
+        </div>
+    </div>
+    {% for value in substitue %}
+        <div class="container">
+            <!-- <h1>Cartes</h1>
+            <h2>Card-group :</h2> -->
+            <div class="card-group mb-5">
+                <div class="card">
+                    <!-- <div class="card-header">En-tête de la première carte</div> -->
+                    <div class="card-body">
+                        <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
+                        <img src={{value.image}}>
+                        <p class="card-text"><small class="text-muted"> Nutriscore: {{value.nutriscore}}</small></p>
+                    </div>
+                    {%  if user.is_authenticated %}
+                    <div class="card-footer">
+                        <form method="post" action="/comparator/addfavorite/" class="form-inline my-2 my-lg-0">
+                            {% csrf_token %}
+                            <input type="hidden" id="add_fav" name="add_fav" value="{{ value.product_id }}">
+                            <button class="btn btn-primary btn-xl" type="submit">Save as favorite</button>
+                        </form>
+                    </div>
+                    {%  endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</header>
+{% endblock %}
+
+
