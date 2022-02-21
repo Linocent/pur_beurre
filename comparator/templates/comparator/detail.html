@@ -33,7 +33,8 @@
                     <div class="card-footer">
                         <form method="post" action="/comparator/addfavorite/" class="form-inline my-2 my-lg-0">
                             {% csrf_token %}
-                            <input type="hidden" id="add_fav" name="add_fav" value="{{ value.product_id }}">
+                            <input type="hidden" id="sub" name="sub" value="{{ value.product_id}}">
+                            <input type="hidden" id="prod" name="prod" value="{{product.product_id}}">
                             <button class="btn btn-primary btn-xl" type="submit">Save as favorite</button>
                         </form>
                     </div>

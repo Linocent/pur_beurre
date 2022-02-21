@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import render, redirect
+from django.contrib.auth import (
+    login,
+    authenticate,
+    logout,
+)
+from django.shortcuts import (
+    render,
+    redirect
+)
 from .forms import SignUpForm
 from django.contrib.auth.decorators import login_required
 from .backend import EmailBackend
@@ -16,7 +23,10 @@ def sign_up(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             email = form.cleaned_data["email"]
-            user = authenticate(username=email, password=raw_password)
+            user = authenticate(
+                username=email,
+                password=raw_password,
+            )
             if user == None:
                 user = User.objects.create_user(
                     password=raw_password,
@@ -34,7 +44,11 @@ def log_in(request):
     if request.method == 'POST':
         mail = request.POST['email']
         password = request.POST['password']
-        user = EmailBackend().authenticate(request, username=mail, password=password)
+        user = EmailBackend().authenticate(
+            request,
+            username=mail,
+            password=password,
+        )
         if user is not None:
             print("User authentificatedfdqgdfsdh")
             login(request, user)
