@@ -73,9 +73,13 @@ def add_favorite(request):
             substitute=substitute,
         )
         favoris.save()
-    return HttpResponse("produit sauvegardé")
+    return redirect('/')
 
 
 @login_required
 def favorite(request):
-    pass
+    user = request.user
+    username = User.objects.get(username=user)
+    prod = Favorite.objects.filter(user=username)
+    if prod.exists():
+        return render(request, 'comparator/favorite', {'prod': prod})

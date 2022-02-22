@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'comparator/base.html' %}
+{% block content %}
 
-</body>
-</html>
+<header class="masthead">
+    <div class="container">
+    {% for value in substitue %}
+            <div class="container">
+                <!-- <h1>Cartes</h1>
+                <h2>Card-group :</h2> -->
+                <div class="card-group mb-5">
+                    <div class="card">
+                        <!-- <div class="card-header">En-tête de la première carte</div> -->
+                        <div class="card-body">
+                            <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
+                            <img src={{value.image}}>
+                            <p class="card-text"><small class="text-muted"> Nutriscore: {{value.nutriscore}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</header>
+{% endblock %}

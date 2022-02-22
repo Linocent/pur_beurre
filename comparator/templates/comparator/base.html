@@ -35,7 +35,7 @@
                             </form>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="">Mon compte</a></li>
-                        <li class="nav-item"><a class="nav-link" href=""><img rel="carrot" type="image/png" src="{%static 'comparator/assets/carrot.png' %}" height="30"></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url "favorite" %}"><img rel="carrot" type="image/png" src="{%static 'comparator/assets/carrot.png' %}" height="30"></a></li>
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url "log_out" %}">Déconnexion</a></li>
                         {% else %}
