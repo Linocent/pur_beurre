@@ -82,4 +82,7 @@ def favorite(request):
     username = User.objects.get(username=user)
     prod = Favorite.objects.filter(user=username)
     if prod.exists():
-        return render(request, 'comparator/favorite', {'prod': prod})
+        print(prod)
+        return render(request, 'comparator/favorite.html', {'prod': prod})
+    else:
+        print("error, no data")

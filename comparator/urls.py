@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^product_detail/(?P<product_id>[0-9]+)/$', views.detail, name='product_detail'),
     url(r'^search/$', views.search),
     url(r'^addfavorite/', views.add_favorite, name="add_favorite"),
-    url(r'^favorite/', views.Favorite, name="favorite"),
+    url(r'^favorite/', views.favorite, name="favorite"),
 ]
