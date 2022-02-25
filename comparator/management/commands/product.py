@@ -35,18 +35,20 @@ class Command(BaseCommand):
                         "page_size": 100,
                         "countries": "France",
                     }
-                    prod = rq.get('https://world.openfoodfacts.org/cgi/search.pl?',
-                                  params=payload)
+                    prod = rq.get(
+                        'https://world.openfoodfacts.org/cgi/search.pl?',
+                        params=payload)
                     response = prod.json()
                     response = response["products"]
 
                 except HTTPError as err:
                     print(
-                        "Openfoodfacts server might be busy or has crashed, or check your connection : {}\n".format(
-                            err))
+                        "Openfoodfacts server might be busy or has crashed,"
+                        "or check your connection : {}\n".format(err))
                 except ConnectionError as con_err:
                     print(
-                        "Openfoodfacts server is not reachable, check your connexion {}".format(con_err))
+                        "Openfoodfacts server is not reachable,"
+                        "check your connexion {}".format(con_err))
 
                 for item in response:
                     try:
@@ -67,5 +69,7 @@ class Command(BaseCommand):
                         pass
                     except ValidationError:
                         pass
-                    print(f"Extraction of {item.get('product_name')} in {cat}")
+                    print(f"Extraction of"
+                          f" {item.get('product_name')} "
+                          f"in {cat}")
         print(f"Extraction is over.")

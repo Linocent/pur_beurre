@@ -1,9 +1,5 @@
 from django.core.management.base import BaseCommand
-from requests.exceptions import HTTPError, ConnectionError
-import requests as rq
-from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
-from comparator.models import Product, Categorie
+from comparator.models import Categorie
 
 
 class Command(BaseCommand):

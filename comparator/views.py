@@ -5,17 +5,10 @@ from django.shortcuts import (
 )
 from django.http import HttpResponse
 from .models import (
-    Categorie,
     Product,
     Favorite,
 )
 from django.template import loader
-from django.contrib.auth import (
-    authenticate,
-    login,
-    logout,
-)
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -52,9 +45,11 @@ def search(request, query):
     else:
         answer_prod = Product.objects.filter(name__icontains=query)
         if answer_prod.exists():
-            return render(request, "comparator/search_form.html", {"answer_prod": answer_prod})
+            return render(request, "comparator/search_form.html",
+                          {"answer_prod": answer_prod})
         if not answer_prod.exists():
-            message = "Misère de misère, nous n'avons rien trouvé comme résultat!"
+            message = "Misère de misère, nous n'avons " \
+                      "rien trouvé comme résultat!"
             return HttpResponse(message)
 
 
@@ -89,6 +84,7 @@ def favorite(request):
             sub = item.substitute
             prod_list.append(sub)
         print(prod)
-        return render(request, 'comparator/favorite.html', {'prod_list': prod_list})
+        return render(request, 'comparator/favorite.html',
+                      {'prod_list': prod_list})
     else:
         print("error, no data")

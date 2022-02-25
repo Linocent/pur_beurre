@@ -27,7 +27,7 @@ def sign_up(request):
                 username=email,
                 password=raw_password,
             )
-            if user == None:
+            if user is None:
                 user = User.objects.create_user(
                     password=raw_password,
                     email=email,
