@@ -3,7 +3,7 @@
 
 <header class="masthead">
     <div class="container">
-    {% for value in substitue %}
+        {% for prod in prod_list %}
             <div class="container">
                 <!-- <h1>Cartes</h1>
                 <h2>Card-group :</h2> -->
@@ -11,9 +11,9 @@
                     <div class="card">
                         <!-- <div class="card-header">En-tête de la première carte</div> -->
                         <div class="card-body">
-                            <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
-                            <img src={{value.image}}>
-                            <p class="card-text"><small class="text-muted"> Nutriscore: {{value.nutriscore}}</small></p>
+                            <a href="{% url 'product_detail' product_id=prod.product_id %}"><h3 class="card-title">{{prod.name}}</h3></a>
+                            <img src={{prod.image}}>
+                            <p class="card-text"><small class="text-muted"> Nutriscore: {{prod.nutriscore}}</small></p>
                         </div>
                     </div>
                 </div>
