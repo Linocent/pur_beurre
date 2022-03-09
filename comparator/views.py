@@ -23,6 +23,7 @@ def index(request):
 
 
 def detail(request, product_id):
+    """Display details of a product."""
     product_choose = get_object_or_404(
         Product,
         product_id=product_id
@@ -39,6 +40,7 @@ def detail(request, product_id):
 
 
 def search(request, query):
+    """Looking for product in DB"""
     if not query:
         message = "Misère de misère, nous n'avons rien trouvé comme résultat!"
         return HttpResponse(message)
@@ -50,10 +52,12 @@ def search(request, query):
         if not answer_prod.exists():
             message = "Misère de misère, nous n'avons " \
                       "rien trouvé comme résultat!"
-            return HttpResponse(message)
+            return render(request, "comparator/404.html",
+                          {'message': message})
 
 
 def add_favorite(request):
+    """Add products and their substitute in table Favorite."""
     if request.method == "POST":
         sub = request.POST.get("sub")
         substitute = Product.objects.get(product_id=sub)
@@ -71,8 +75,14 @@ def add_favorite(request):
     return redirect('/')
 
 
+def page_not_found(request):
+    message = "Error 404: Page not found"
+    return render(request, "comparator/404.html", {"message": message})
+
+
 @login_required
 def favorite(request):
+    """Get data from favorite table and return it."""
     user = request.user
     username = User.objects.get(username=user)
     prod = Favorite.objects.filter(user=username)
@@ -88,3 +98,9 @@ def favorite(request):
                       {'prod_list': prod_list})
     else:
         print("error, no data")
+
+"""
+def mention_legal(request):
+    Mention legal of web site
+    return render(request, 'comparator/mention_legal.html')
+"""

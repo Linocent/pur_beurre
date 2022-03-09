@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^search/$', views.search),
     url(r'^addfavorite/', views.add_favorite, name="add_favorite"),
     url(r'^favorite/', views.favorite, name="favorite"),
+    url (r'^404/', views.page_not_found, name="404"),
 ]

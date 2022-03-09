@@ -1,0 +1,12 @@
+{% extends 'comparator/base.html' %}
+{% block content %}
+<header class="masthead">
+
+    <div class="container">
+        {% for msg in message %}
+            <p>{{ msg }}</p>
+        {%  endfor %}
+    </div>
+
+</header>
+{% endblock %}
