@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth import (
     login,
     authenticate,
@@ -17,7 +16,6 @@ from django.contrib.auth.models import User
 def sign_up(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        print(form.errors.as_data())
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -50,7 +48,6 @@ def log_in(request):
             password=password,
         )
         if user is not None:
-            print("User authentificatedfdqgdfsdh")
             login(request, user)
             return redirect('/')
         else:
