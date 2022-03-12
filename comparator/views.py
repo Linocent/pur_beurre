@@ -16,10 +16,9 @@ from django.contrib.auth.models import User
 
 def index(request):
     query = request.GET.get('query')
-    template = loader.get_template('comparator/index.html')
     if query:
         return search(request, query)
-    return HttpResponse(template.render(request=request))
+    return render(request, "comparator/index.html")
 
 
 def detail(request, product_id):
@@ -97,7 +96,16 @@ def favorite(request):
         return render(request, 'comparator/favorite.html',
                       {'prod_list': prod_list})
     else:
-        print("error, no data")
+        message = 'Pas de produit enregistré.'
+        return render(request, 'comparator/favorite.html', {'msg': message})
+
+
+@login_required
+def account(request):
+    user = request.user
+    username = User.objects.get(username=user)
+    print(user)
+    return render(request, 'comparator/account.html', {'username': username})
 
 """
 def mention_legal(request):

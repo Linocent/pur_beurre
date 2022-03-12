@@ -17,21 +17,16 @@ def sign_up(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             email = form.cleaned_data["email"]
-            user = authenticate(
-                username=email,
+            user = User.objects.create_user(
                 password=raw_password,
+                email=email,
+                username=username,
             )
-            if user is None:
-                user = User.objects.create_user(
-                    password=raw_password,
-                    email=email,
-                    username=username,
-                )
-                user.save()
+            print(user)
+            user.save()
             return redirect('log_in')
     else:
         form = SignUpForm()
