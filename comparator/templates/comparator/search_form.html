@@ -20,7 +20,9 @@
                 <div class="col-lg-4 text-center">
                     <div class="mt-5">
                         <div class="product">
-                            <a href="{% url 'product_detail' product_id=value.product_id %}"><h3>{{value.name}}</h3></a>
+                            <a href="{% url 'product_detail' product_id=value.product_id %}">
+                                <h3>{{value.name}}</h3>
+                            </a>
                             <img src={{value.image}}>
                             <span class="nutriscore"><small>{{value.nutriscore}}</small></span>
                         </div>

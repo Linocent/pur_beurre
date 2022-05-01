@@ -17,7 +17,9 @@
                     <div class="col-lg-4 text-center">
                         <div class="mt-5">
                             <div class="product">
-                                <a href="{% url 'product_detail' product_id=prod.product_id %}"><h3 class="card-title">{{prod.name}}</h3></a>
+                                <a href="{% url 'product_detail' product_id=prod.product_id %}">
+                                    <h3 class="card-title">{{prod.name}}</h3>
+                                </a>
                                 <img src={{prod.image}}>
                                 <span class="nutriscore"><small> {{prod.nutriscore}} </small></span>
                             </div>
