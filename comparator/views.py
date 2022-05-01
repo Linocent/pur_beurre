@@ -40,8 +40,9 @@ def detail(request, product_id):
 def search(request, query):
     """Looking for product in DB"""
     if not query:
-        message = "Misère de misère, nous n'avons rien trouvé comme résultat!"
-        return HttpResponse(message)
+        message = "Misère de misère, nous n'avons " \
+                  "rien trouvé comme résultat!"
+        return page_not_found(request, message)
     else:
         answer_prod = Product.objects.filter(name__icontains=query)
         if answer_prod.exists():
@@ -50,8 +51,7 @@ def search(request, query):
         if not answer_prod.exists():
             message = "Misère de misère, nous n'avons " \
                       "rien trouvé comme résultat!"
-            return render(request, "comparator/404.html",
-                          {'message': message})
+            return page_not_found(request, message)
 
 
 def add_favorite(request):
@@ -73,8 +73,9 @@ def add_favorite(request):
     return redirect('/')
 
 
-def page_not_found(request):
-    message = "Error 404: Page not found"
+def page_not_found(request, message):
+    if message == "":
+        message = "Error 404: Page not found"
     return render(request, "comparator/404.html", {"message": message})
 
 
