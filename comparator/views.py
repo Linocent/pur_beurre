@@ -3,10 +3,10 @@ from django.shortcuts import (
     redirect,
     get_object_or_404,
 )
-from django.http import HttpResponse
 from .models import (
     Product,
     Favorite,
+    Categorie,
 )
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -33,8 +33,11 @@ def detail(request, product_id):
         ).filter(Q(nutriscore__lte=nut)).exclude(
             product_id=product_choose.product_id
         ))
-    return render(request, "comparator/detail.html",
-                  {"substitue": query_set_product, "product": product_choose})
+    return render(
+        request,
+        "comparator/detail.html",
+        {"substitue": query_set_product, "product": product_choose}
+    )
 
 
 def search(request, query):
@@ -46,8 +49,11 @@ def search(request, query):
     else:
         answer_prod = Product.objects.filter(name__icontains=query)
         if answer_prod.exists():
-            return render(request, "comparator/search_form.html",
-                          {"answer_prod": answer_prod})
+            return render(
+                request,
+                "comparator/search_form.html",
+                {"answer_prod": answer_prod, 'query': query}
+            )
         if not answer_prod.exists():
             message = "Misère de misère, nous n'avons " \
                       "rien trouvé comme résultat!"
@@ -74,9 +80,12 @@ def add_favorite(request):
 
 
 def page_not_found(request, message):
-    if message == "":
-        message = "Error 404: Page not found"
-    return render(request, "comparator/404.html", {"message": message})
+    cat = Categorie.objects.all()
+    return render(
+        request,
+        "comparator/404.html",
+        {"message": message, 'cat': cat}
+    )
 
 
 @login_required
@@ -92,22 +101,30 @@ def favorite(request):
             prod_list.append(chosen_product)
             sub = item.substitute
             prod_list.append(sub)
-        print(prod)
-        return render(request, 'comparator/favorite.html',
-                      {'prod_list': prod_list})
+        return render(
+            request,
+            'comparator/favorite.html',
+            {'prod_list': prod_list}
+        )
     else:
         message = 'Pas de produit enregistré.'
-        return render(request, 'comparator/favorite.html', {'msg': message})
+        return render(
+            request,
+            'comparator/favorite.html',
+            {'msg': message}
+        )
 
 
 @login_required
-def account(request):
+def my_account(request):
     user = request.user
     username = User.objects.get(username=user)
-    mail = User.objects.filter(email__icontains=user)
-    print(user)
-    print(mail)
-    return render(request, 'comparator/account.html', {'username': username, 'email': mail})
+    mail = username.email
+    return render(
+        request,
+        'comparator/account.html',
+        {'username': username, 'mail': mail}
+    )
 
 """
 def mention_legal(request):
