@@ -53,13 +53,13 @@
                                 <input
                                         class="form-control mr-sm-2 bg-light text-black"
                                         type="search"
-                                        placeholder="Chercher"
+                                        placeholder="Rechercher un produit"
                                         aria-label="Search"
                                         name="query">
                             </form>
                         </li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url "account" %}">Mon compte</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url "my_account" %}">Mon compte</a></li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "favorite" %}">
                             <img
@@ -96,9 +96,9 @@
                             <a class="d-block" href=""><h2 class="mt-0">Contactez-nous!</h2></a>
                         </div>
                     </div>
-
+                </div>
                 <div class="container">
-                    <div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div>
+                    <div class="small text-center text-muted">Copyright © 2020 - Pur Beurre</div>
                 </div>
             </section>
         </footer>
