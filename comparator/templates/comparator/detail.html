@@ -1,49 +1,50 @@
 {% extends 'comparator/base.html' %}
 {% block content %}
+{% load static %}
 
 <header class="masthead">
-    <div class="container">
-        <!-- <h1>Cartes</h1>
-        <h2>Card-group :</h2> -->
-        <div class="card-group mb-5">
-            <div class="card">
-                <!-- <div class="card-header">En-tête de la première carte</div> -->
-                <div class="card-body">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <div class="product">
                     <a href="{% url 'product_detail' product_id=product.product_id %}"><h3 class="card-title">{{product.name}}</h3></a>
                     <img src={{product.image}}>
-                    <p class="card-text"><small class="text-muted"> Nutriscore: {{product.nutriscore}}</small></p>
+                    <span class="nutriscore"><small>{{product.nutriscore}}</small></span>
+                    <hr class="divider my-4" />
                 </div>
-                <!-- <div class="card-footer">Pied de la première carte</div> -->
             </div>
         </div>
     </div>
-    {% for value in substitue %}
-        <div class="container">
-            <!-- <h1>Cartes</h1>
-            <h2>Card-group :</h2> -->
-            <div class="card-group mb-5">
-                <div class="card">
-                    <!-- <div class="card-header">En-tête de la première carte</div> -->
-                    <div class="card-body">
-                        <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
-                        <img src={{value.image}}>
-                        <p class="card-text"><small class="text-muted"> Nutriscore: {{value.nutriscore}}</small></p>
+</header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            {% for value in substitue %}
+            <div class="col-lg-4 text-center">
+                <div class="mt-5">
+                    <div class="product" style="width: 18rem;">
+                        <!-- <div class="card-header">En-tête de la première carte</div> -->
+                        <div class="card-body">
+                            <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
+                            <img src={{value.image}}>
+                            <span class="nutriscore"><small>{{value.nutriscore}}</small></span>
+                        </div>
+                        {%  if user.is_authenticated %}
+                            <form method="post" action="/comparator/addfavorite/" class="form-inline my-2 my-lg-0">
+                                {% csrf_token %}
+                                <input type="hidden" id="sub" name="sub" value="{{ value.product_id}}">
+                                <input type="hidden" id="prod" name="prod" value="{{product.product_id}}">
+                                <button class="btn btn-primary btn-xl" type="submit">Save as favorite</button>
+                            </form>
+                        {%  endif %}
                     </div>
-                    {%  if user.is_authenticated %}
-                    <div class="card-footer">
-                        <form method="post" action="/comparator/addfavorite/" class="form-inline my-2 my-lg-0">
-                            {% csrf_token %}
-                            <input type="hidden" id="sub" name="sub" value="{{ value.product_id}}">
-                            <input type="hidden" id="prod" name="prod" value="{{product.product_id}}">
-                            <button class="btn btn-primary btn-xl" type="submit">Save as favorite</button>
-                        </form>
-                    </div>
-                    {%  endif %}
                 </div>
             </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-</header>
+    </div>
+</section>
 {% endblock %}
 
 

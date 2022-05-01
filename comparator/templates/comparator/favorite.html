@@ -2,27 +2,33 @@
 {% block content %}
 
 <header class="masthead">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <h1 class="text-uppercase text-white font-weight-bold"> Favoris enregistré: </h1>
+        </div>
+    </div>
+</header>
+
+<section>
     <div class="container">
-        {% if not msg %}
-            {% for prod in prod_list %}
-                <div class="container">
-                    <!-- <h1>Cartes</h1>
-                    <h2>Card-group :</h2> -->
-                    <div class="card-group mb-5">
-                        <div class="card">
-                            <!-- <div class="card-header">En-tête de la première carte</div> -->
-                            <div class="card-body">
+        <div class="row">
+            {% if not msg %}
+                {% for prod in prod_list %}
+                    <div class="col-lg-4 text-center">
+                        <div class="mt-5">
+                            <div class="product">
                                 <a href="{% url 'product_detail' product_id=prod.product_id %}"><h3 class="card-title">{{prod.name}}</h3></a>
                                 <img src={{prod.image}}>
-                                <p class="card-text"><small class="text-muted"> Nutriscore: {{prod.nutriscore}}</small></p>
+                                <span class="nutriscore"><small> {{prod.nutriscore}} </small></span>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-            {% else %}
-                <p>{{ msg }}</p>
-        {% endif %}
+                {% endfor %}
+                {% else %}
+                    <p>{{ msg }}</p>
+            {% endif %}
+        </div>
     </div>
-</header>
+</section>
+
 {% endblock %}

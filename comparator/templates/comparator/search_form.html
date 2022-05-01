@@ -2,23 +2,34 @@
 {%block content %}
 
 <header class="masthead">
-    {% for value in answer_prod %}
-        <div class="container">
-            <!-- <h1>Cartes</h1>
-            <h2>Card-group :</h2> -->
-            <div class="card-group mb-5">
-                <div class="card">
-                    <!-- <div class="card-header">En-tête de la première carte</div> -->
-                    <div class="card-body">
-                        <a href="{% url 'product_detail' product_id=value.product_id %}"><h3 class="card-title">{{value.name}}</h3></a>
-                        <img src={{value.image}}>
-                        <p class="card-text"><small class="text-muted"> Nutriscore: {{value.nutriscore}}</small></p>
-                    </div>
-                    <!-- <div class="card-footer">Pied de la première carte</div> -->
-                </div>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <h1 class="text-uppercase text-white font-weight-bold">Aliment de substitution:</h1>
+                <img src={{value.image}}>
+                <hr class="divider my-4" />
             </div>
         </div>
-    {% endfor %}
+    </div>
 </header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            {% for value in answer_prod %}
+                <div class="col-lg-4 text-center">
+                    <div class="mt-5">
+                        <div class="product">
+                            <a href="{% url 'product_detail' product_id=value.product_id %}"><h3>{{value.name}}</h3></a>
+                            <img src={{value.image}}>
+                            <span class="nutriscore"><small>{{value.nutriscore}}</small></span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 
 {% endblock %}

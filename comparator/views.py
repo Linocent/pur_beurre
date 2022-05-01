@@ -8,7 +8,6 @@ from .models import (
     Product,
     Favorite,
 )
-from django.template import loader
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -104,8 +103,10 @@ def favorite(request):
 def account(request):
     user = request.user
     username = User.objects.get(username=user)
+    mail = User.objects.filter(email__icontains=user)
     print(user)
-    return render(request, 'comparator/account.html', {'username': username})
+    print(mail)
+    return render(request, 'comparator/account.html', {'username': username, 'email': mail})
 
 """
 def mention_legal(request):
