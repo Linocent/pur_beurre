@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^favorite/', views.favorite, name='favorite'),
     url(r'^404/', views.page_not_found, name='404'),
     url(r'^my_account/', views.my_account, name='my_account'),
+    url(r'^legal_mention/', views.mention_legal, name='legal_mention')
 ]
