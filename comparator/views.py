@@ -69,7 +69,6 @@ def add_favorite(request):
         product = Product.objects.get(product_id=prod)
         username = request.user
         user = User.objects.get(username=username)
-        print(user, product, sub)
         favoris = Favorite(
             user=user,
             chosen_product=product,
@@ -80,6 +79,7 @@ def add_favorite(request):
 
 
 def page_not_found(request, message):
+    """Display error if request doesn't match."""
     cat = Categorie.objects.all()
     return render(
         request,
@@ -117,6 +117,7 @@ def favorite(request):
 
 @login_required
 def my_account(request):
+    """display user account page."""
     user = request.user
     username = User.objects.get(username=user)
     mail = username.email
@@ -126,8 +127,7 @@ def my_account(request):
         {'username': username, 'mail': mail}
     )
 
-"""
+
 def mention_legal(request):
-    Mention legal of web site
+    """Mention legal of web site"""
     return render(request, 'comparator/mention_legal.html')
-"""
