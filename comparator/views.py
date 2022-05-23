@@ -60,6 +60,7 @@ def search(request, query):
             return page_not_found(request, message)
 
 
+@login_required
 def add_favorite(request):
     """Add products and their substitute in table Favorite."""
     if request.method == "POST":

@@ -10,7 +10,7 @@ urlpatterns = [
         views.detail,
         name='product_detail'
     ),
-    url(r'^search/$', views.search),
+    url(r'^search/$', views.search, name='search'),
     url(
         r'^addfavorite/',
         views.add_favorite,
