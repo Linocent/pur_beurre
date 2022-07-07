@@ -105,7 +105,7 @@ def favorite(request):
         return render(
             request,
             'comparator/favorite.html',
-            {'prod_list': prod_list}
+            context={'prod_list': prod_list}
         )
     else:
         message = 'Pas de produit enregistré.'

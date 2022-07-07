@@ -1,4 +1,4 @@
 from . import (
-    Test_ComparatorView,
-    Test_ComparatorDb,
+    test_views,
+    test_models,
 )
