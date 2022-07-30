@@ -1,5 +1,5 @@
 """
-Pour utiliser cette commande: python manage.py category
+For use this command, execute this: python manage.py: python manage.py category
 """
 from django.core.management.base import BaseCommand
 from comparator.models import Categorie

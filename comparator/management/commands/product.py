@@ -1,5 +1,5 @@
 """
-Pour utiliser cette commande: python manage.py product
+For use this command, execute this: python manage.py product
 """
 from django.core.management.base import BaseCommand
 from requests.exceptions import HTTPError, ConnectionError
