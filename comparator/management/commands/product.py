@@ -1,5 +1,5 @@
 """
-Pour utiliser cette commande: python manage.py search
+Pour utiliser cette commande: python manage.py product
 """
 from django.core.management.base import BaseCommand
 from requests.exceptions import HTTPError, ConnectionError

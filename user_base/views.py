@@ -24,7 +24,6 @@ def sign_up(request):
                 email=email,
                 username=username,
             )
-            print(user)
             user.save()
             return redirect('log_in')
     else:
