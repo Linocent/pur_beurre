@@ -1,3 +1,6 @@
+"""
+Pour utiliser cette commande: python manage.py category
+"""
 from django.core.management.base import BaseCommand
 from comparator.models import Categorie
 

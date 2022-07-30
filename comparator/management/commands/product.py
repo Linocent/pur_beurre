@@ -72,4 +72,4 @@ class Command(BaseCommand):
                     print(f"Extraction of"
                           f" {item.get('product_name')} "
                           f"in {cat}")
-        print(f"Extraction is over.")
+        print('Extraction is over.')
