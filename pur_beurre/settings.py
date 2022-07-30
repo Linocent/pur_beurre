@@ -31,22 +31,24 @@ SECRET_KEY = os.environ.get(
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
     # Static files settings
-    STATIC_URL = 'comparator/static/'
+    STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     # Extra places for collect static to find static files
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
+        os.path.join(BASE_DIR, 'static'),
     ]
     # Simplified static file serving
     # https://warehouse.python.org/project/whitenoise/
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 else:
     DEBUG = True
 
 
-ALLOWED_HOSTS = ['leshtroumpfpurbeurre.herokuapp.com']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'leshtroumpfpurbeurre.herokuapp.com'
+]
 
 
 # Application definition
@@ -132,7 +134,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -151,7 +152,9 @@ if 'DATABASE_URL' in os.environ:
         conn_max_age=500,
     )
 
-
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
