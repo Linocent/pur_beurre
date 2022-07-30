@@ -31,8 +31,8 @@ SECRET_KEY = os.environ.get(
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
     # Static files settings
-    STATIC_URL = 'comparator/static'
-    STATIC_ROOT = os.path.join(STATIC_URL, 'staticfiles')
+    STATIC_URL = 'comparator/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     # Extra places for collect static to find static files
     STATICFILES_DIRS = (
@@ -151,10 +151,7 @@ if 'DATABASE_URL' in os.environ:
         conn_max_age=500,
     )
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
