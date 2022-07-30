@@ -2,11 +2,15 @@
 
 {% block content %}
 <header class="masthead">
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+          <h2>Sign up</h2>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign up</button>
+          </form>
+        </div>
+    </section>
 </header>
 {% endblock %}
