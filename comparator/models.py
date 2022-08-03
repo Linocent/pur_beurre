@@ -11,10 +11,15 @@ class Categorie(models.Model):
 
 class Product(models.Model):
     product_id = models.BigIntegerField(primary_key=True)
+    url = models.URLField(
+        null=False,
+        default=None,
+        blank=False,
+    )
     image = models.URLField(
         null=True,
         default=None,
-        blank=True
+        blank=True,
     )
     name = models.CharField(max_length=200)
     nutriscore = models.CharField(max_length=1)

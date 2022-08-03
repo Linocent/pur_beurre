@@ -115,6 +115,20 @@ def favorite(request):
 
 
 @login_required
+def fav_detail(request, product_id):
+    """Display detail of a product save as favorite."""
+    product_choose = get_object_or_404(
+        Product,
+        product_id=product_id
+    )
+    return render(
+        request,
+        'comparator/fav_detail.html',
+        {'product': product_choose}
+    )
+
+
+@login_required
 def my_account(request):
     """display user account page."""
     user = request.user
