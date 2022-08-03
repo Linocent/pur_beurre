@@ -18,7 +18,7 @@ def sign_up(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
-            email = form.cleaned_data["email"]
+            email = form.cleaned_data['email']
             user = User.objects.create_user(
                 password=raw_password,
                 email=email,
