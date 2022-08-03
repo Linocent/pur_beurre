@@ -10,6 +10,11 @@ urlpatterns = [
         views.detail,
         name='product_detail'
     ),
+    url(
+        r'^fav_detail/(?P<product_id>[0-9]+)/$',
+        views.fav_detail,
+        name='fav_detail',
+    ),
     url(r'^search/$', views.search, name='search'),
     url(
         r'^addfavorite/',
