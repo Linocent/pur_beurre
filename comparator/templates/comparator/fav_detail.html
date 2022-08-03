@@ -22,16 +22,16 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="row">Nutriscore</div>
-                <div class="row">{{ product.nutriscore }}</div>
+                <div class="row d-flex justify-content-around">Nutriscore</div>
+                <div class="row d-flex justify-content-around">{{ product.nutriscore }}</div>
             </div>
             <div class="col">
-                <div class="row"> Repère Nutritionnels pour 100g</div>
+                <div class="row d-flex justify-content-around"> Repère Nutritionnels pour 100g</div>
             </div>
         </div>
     </div>
     <div class="container">
-        <a href="{{ product.url }}">
+        <a href="{{ product.url }}" class="d-flex justify-content-around">
             <span class="border"> Voir la fiche d'OpenFoodFact</span>
         </a>
     </div>
