@@ -103,12 +103,10 @@ class FavoritePageTest(TestCase):
         prod = Favorite.objects.filter(user_id=1)
         prod_list = list()
         for item in prod:
-            chosen_product = item.chosen_product
-            prod_list.append(chosen_product)
             sub = item.substitute
             prod_list.append(sub)
         self.assertEqual(
-            saved_fav.context['prod_list'],
+            saved_fav.context['sub'],
             prod_list
         )
         self.client.logout()
@@ -116,11 +114,14 @@ class FavoritePageTest(TestCase):
         self.assertEqual(anonymous_response.status_code, 302)
 
     def test_add_favorite(self):
-        form_data = {"sub": substitute, "prod": product, "user": user}
-
-    def test_add_favorite_view_not_connected_user(self):
-        self.client.logout()
-        response = self.client.get(reverse('add_favorite'))
+        self.client.login(username='test', password='123456789')
+        response = self.client.post(
+            '/comparator/addfavorite/',
+            {
+                'prod': self.product.product_id,
+                'sub': self.sub.product_id,
+            }
+        )
         self.assertEqual(response.status_code, 302)
 
 

@@ -98,14 +98,12 @@ def favorite(request):
     prod_list = list()
     if prod.exists():
         for item in prod:
-            chosen_product = item.chosen_product
-            prod_list.append(chosen_product)
             sub = item.substitute
             prod_list.append(sub)
         return render(
             request,
             'comparator/favorite.html',
-            context={'prod_list': prod_list}
+            context={'sub': prod_list}
         )
     else:
         message = 'Pas de produit enregistré.'

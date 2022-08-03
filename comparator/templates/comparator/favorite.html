@@ -16,15 +16,17 @@
     <div class="container">
         <div class="row">
             {% if not msg %}
-                {% for prod in prod_list %}
+                {% for elt in sub %}
                     <div class="col-lg-4 text-center">
                         <div class="mt-5">
-                            <div class="product">
-                                <a href="{% url 'product_detail' product_id=prod.product_id %}">
-                                    <h3 class="card-title">{{prod.name}}</h3>
-                                </a>
-                                <img src={{prod.image}}>
-                                <span class="nutriscore"><small> {{prod.nutriscore}} </small></span>
+                            <div class="prod">
+                                <div class="product">
+                                    <a href="{% url 'product_detail' product_id=elt.product_id %}">
+                                        <h3 class="card-title">{{elt.name}}</h3>
+                                    </a>
+                                    <img src={{elt.image}}>
+                                    <span class="nutriscore"><small> {{elt.nutriscore}} </small></span>
+                                </div>
                             </div>
                         </div>
                     </div>
