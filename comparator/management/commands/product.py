@@ -56,6 +56,7 @@ class Command(BaseCommand):
                         url_validator(item["image_small_url"])
                         if isinstance(item.get("id"), str):
                             query = Product(
+                                url=item.get('url'),
                                 product_id=item.get("id"),
                                 image=item.get("image_small_url"),
                                 categorie=cat,
