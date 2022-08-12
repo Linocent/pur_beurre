@@ -47,7 +47,8 @@ else:
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'leshtroumpfpurbeurre.herokuapp.com'
+    'leshtroumpfpurbeurre.herokuapp.com',
+    '164.92.90.126',
 ]
 
 
