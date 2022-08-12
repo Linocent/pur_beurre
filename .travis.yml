@@ -4,11 +4,9 @@ python:
 # command to install dependencies
 before_script:
   - pip install -r requirements.txt
-# command to run test
-services:
-  - postgresql
 branches:
   only:
     - staging
+# command to run test
 script:
   - python manage.py test
