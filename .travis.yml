@@ -13,6 +13,8 @@ before_script:
 services:
   - postgresql
 
+env: DJANGO_SETTINGS_MODULE=pur_beurre.settings
+
 # command to run test
 script:
   - python3 manage.py makemigrations
