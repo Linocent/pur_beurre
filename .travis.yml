@@ -7,12 +7,12 @@ branches:
   only:
     - staging
 
-before_script:
-  - pip install -r requirements.txt
-  - psql -c 'create database pur_beurre;' -U timothee
-
 services:
   - postgresql
+
+before_script:
+  - pip install -r requirements.txt
+  - psql -c 'create database pur_beurre;' -U postgres
 
 env: DJANGO_SETTINGS_MODULE=settings_travis.travis
 
