@@ -36,6 +36,7 @@ class TestProductDetail(TestCase):
             name='name1',
             nutriscore='c',
             categorie_id=1,
+            url='http://openfoodfact.com/name1',
         )
         self.product.save()
 
@@ -45,6 +46,7 @@ class TestProductDetail(TestCase):
             name='name2',
             nutriscore='a',
             categorie_id=1,
+            url='http://openfoodfact.com/name2',
         )
         self.sub.save()
 
@@ -77,6 +79,7 @@ class FavoritePageTest(TestCase):
             name='name1',
             nutriscore='c',
             categorie_id=1,
+            url='http://openfoodfact.com/name1',
         )
         self.product.save()
 
@@ -86,6 +89,7 @@ class FavoritePageTest(TestCase):
             name='name2',
             nutriscore='a',
             categorie_id=1,
+            url='http://openfoodfact.com/name2',
         )
         self.sub.save()
 
