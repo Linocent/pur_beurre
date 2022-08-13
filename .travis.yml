@@ -11,7 +11,7 @@ services:
   - postgresql
 
 before_install:
-  - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
+  - export PYTHONPATH=$PYTHONPATH:$(pwd)
 
 before_script:
   - pip install -r requirements.txt
