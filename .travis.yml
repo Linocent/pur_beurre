@@ -11,4 +11,4 @@ services:
   - postgresql
 # command to run test
 script:
-  - python manage.py test
+  - python3 manage.py test
