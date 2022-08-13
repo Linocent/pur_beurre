@@ -9,6 +9,7 @@ branches:
 
 before_script:
   - pip install -r requirements.txt
+  - psql -c 'create database pur_beurre;' -U timothee
 
 services:
   - postgresql
