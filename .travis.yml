@@ -10,12 +10,10 @@ branches:
 services:
   - postgresql
 
-before_install:
-  - export PYTHONPATH=$PYTHONPATH:$(pwd)
-
 before_script:
   - pip install -r requirements.txt
   - psql -c 'create database pur_beurre;' -U postgres
+  - python3 setup.py install
 
 env: DJANGO_SETTINGS_MODULE=pur_beurre.travis
 
