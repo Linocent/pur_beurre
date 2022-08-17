@@ -18,7 +18,7 @@ before_script:
   - pip install -r requirements.txt
   - psql -c 'create database pur_beurre;' -U postgres
 
-env: DJANGO_SETTINGS_MODULE=pur_beurre.travis
+env: DJANGO_SETTINGS_MODULE=travis
 
 # command to run test
 script:
