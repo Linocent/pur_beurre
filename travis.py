@@ -1,4 +1,4 @@
-from .settings import *
+from pur_beurre.settings import *
 
 DATABASES = {
     'default': {
