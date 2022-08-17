@@ -7,9 +7,6 @@ branches:
   only:
     - staging
 
-before_install:
-  - pip install -r pip
-
 services:
   - postgresql
 
