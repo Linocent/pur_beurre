@@ -9,7 +9,6 @@ branches:
 
 before_install:
   - pip install -U pip
-  - python3 setup.py install
 
 services:
   - postgresql
