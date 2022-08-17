@@ -1,3 +1,4 @@
+import os
 from pur_beurre.settings import *
 
 DATABASES = {
