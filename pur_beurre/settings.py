@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +34,21 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
+    sentry_sdk.init(
+        dsn=os.environ.get('sentry'),
+        integrations=[
+            DjangoIntegration(),
+        ],
+
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
     DEBUG = False
     # Static files settings
     STATIC_URL = '/static/'
@@ -40,7 +60,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
     ]
     # Simplified static file serving
     # https://warehouse.python.org/project/whitenoise/
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 else:
     DEBUG = True
 
@@ -49,6 +69,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'leshtroumpfpurbeurre.herokuapp.com',
     '164.92.90.126',
+    'leshtroumpf.site',
 ]
 
 
@@ -64,11 +85,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

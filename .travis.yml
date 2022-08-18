@@ -1,11 +1,24 @@
 language: python
 python:
-  - "3.10.4"
-# command to install dependencies
-before_script:
-  - pip install -r requirements.txt
-# command to run test
+  - '3.8'
+
+# safelist
+branches:
+  only:
+    - staging
+
 services:
   - postgresql
+
+before_script:
+  - pip install -r requirements.txt
+  - psql -c 'create database pur_beurre;' -U postgres
+
+env: DJANGO_SETTINGS_MODULE=travis
+
+# command to run test
 script:
-  - python manage.py test
+  - python3 manage.py makemigrations
+  - python3 manage.py migrate
+  - python3 manage.py test comparator/tests
+  - python manage.py test user_base/tests

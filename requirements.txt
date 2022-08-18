@@ -13,3 +13,6 @@ urllib3==1.26.6
 whitenoise
 dj-database-url
 gunicorn
+pytest-django
+sentry-sdk
+raven
