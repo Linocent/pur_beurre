@@ -20,5 +20,5 @@ env: DJANGO_SETTINGS_MODULE=travis
 script:
   - python3 manage.py makemigrations
   - python3 manage.py migrate
-  - python3 manage.py comparator/tests
-  - python manage.py user_base/tests
+  - python3 manage.py test comparator/tests
+  - python manage.py test user_base/tests
